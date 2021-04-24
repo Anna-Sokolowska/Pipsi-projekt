@@ -6,16 +6,13 @@
 }
 
 html,body{
-    background-image: url('https://www.hidefninja.com/community/attachments/reel-jpeg.157409/');
+    background-image: url('../images/background.jpeg');
+    background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
     font-family: 'Numans', sans-serif;
 }
-
-/* a {
-    color: var(--red)
-} */
 
 .container{
     height: 100%;
