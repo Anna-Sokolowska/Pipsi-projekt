@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://kit.fontawesome.com/8e0f1278a6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <title>My Profile</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-3 border-bottom border-primary">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+              <img src="images/logo.png" width="40" alt="logo">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="index.html">Explore</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Watched movies</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+            </ul>
+            <div class="d-flex align-items-center">
+              <img class="rounded-circle" src="images/male_user.png" alt="male_user" width="50">
+              <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  User
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="myProfile.html">My Profile</a></li>
+                  <li><a class="dropdown-item" href="login.html">Log out</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    
+      <div class="container bg-light mt-3 p-5 rounded-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row justify-content-center">
+                        <div class="col-xxl-3 col-lg-4 col-sm-5 col-8">
+                            <img class="rounded-circle mx-auto" width="200" height="200" 
+                            src="images/female_user.jpg" alt="user">
+                            <h5 class="ms-5 mt-2 pb-2">Han Solo</h5>
+                        </div>
+                        <div class="col-xxl-8 col-lg-6 col-md-6 mt-3">
+                            <h2>Han Solo</h2>
+                            <ul class="list-unstyled profile-list">
+                                <li><i class="fas fa-map-marker-alt"></i> Filipiny</li>
+                                <li><i class="fas fa-building"></i> Sosnowiec</li>
+                                <li><i class="fas fa-mobile-alt"></i> 123456789</li>
+                                <li><i class="fas fa-envelope"></i> elonmusk@spacex.tesla.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <span>
+                <button id="display-profile-data-button" class="btn btn-primary mt-3">Profile</button>
+                <button id="edit-profile-data-button" class="btn btn-secondary mt-3">Edit Profile</button>
+            </span>
+
+            <section id="profile-data" >
+                <div id="display-profile-data" class="card mt-3">
+                    <div class="card-body p-4">
+                        <div class="row profile-list">
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-lg-4 col-5">
+                                        <ul class="list-unstyled">
+                                            <li>Firstname: </li>
+                                            <li>Lastname: </li>
+                                            <li>Birthday: </li>
+                                            <li>Gender: </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-8 col-7">
+                                        <ul class="list-unstyled">
+                                            <li>Han </li>
+                                            <li>Solo </li>
+                                            <li>14 april 2010 </li>
+                                            <li>Female </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-lg-4 col-6">
+                                        <ul class="list-unstyled">
+                                            <li>Country: </li>
+                                            <li>City: </li>
+                                            <li>Phone number: </li>
+                                            <li>Email: </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-6 col-6">
+                                        <ul class="list-unstyled">
+                                            <li>Bangladesh </li>
+                                            <li>Chernobyl </li>
+                                            <li>123456789 </li>
+                                            <li>elonmusk@spacex.tesla.com </li>
+                                        </ul>
+                                    </div>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="edit-profile-data" class="card mt-3 visually-hidden">
+                    <div class="card-body p-5">
+                        <form>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Firstname</label>
+                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Firstname">
+                              </div>
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Lastname</label>
+                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Lastname">
+                              </div>
+
+                              <span class="mt-3">Date of Birth</span>
+                                <div class="row justify-content-between mb-4">
+                                    <div class="col-sm-4">
+                                        <input type="number" class="form-control mt-2" placeholder="DD" min="1" max="31">
+                                    </div>
+                                    <div class="col-sm-4">
+                                         <input type="number" class="form-control mt-2" placeholder="MM" min="1" max="12">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="number" class="form-control mt-2" placeholder="YYYY" min="0" max="2021">
+                                    </div>
+                
+                                </div>
+
+                              <span>Gender</span>
+                              <div class="d-flex mt-2 mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    Male
+                                    </label>
+                                </div>
+                                <div class="form-check ms-5">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                    Female
+                                    </label>
+                              </div>
+                             
+                            </div>
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Country</label>
+                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Country">
+                              </div>
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">City</label>
+                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="City">
+                              </div>
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Phone number</label>
+                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Phone number">
+                              </div>
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email Adress">
+                              </div>
+                              <input class="btn btn-primary w-25 mt-2" type="submit" value="Save">
+                        </form>
+                    </div>
+                </div>
+            </section>
+      </div>
+
+      <script src="scripts/profile.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</body>
+</html>

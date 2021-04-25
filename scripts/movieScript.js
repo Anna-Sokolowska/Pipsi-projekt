@@ -1,6 +1,6 @@
 const movieContainer = document.getElementById('movie-container')
 
-const API_KEY = ''
+const API_KEY = 'a402efe8'
 const HOSTNAME = 'http://www.omdbapi.com/?'
 
 const getMovie = () => {

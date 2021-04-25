@@ -20,10 +20,10 @@ html,body {
     font-family: 'Numans', sans-serif;
 }
 
-.container {
-    max-width: 1600px;
-}
-
 .movie-card:hover {
     cursor: pointer;
+}
+
+.profile-list {
+    line-height: 35px;
 }
