@@ -37,7 +37,7 @@ const getMovie = () => {
                         
                     </div>
                 </div>
-                <a href="index.html" class="btn btn-default mt-3">Go Back To Search</a>
+                <a href="explore.html" class="btn btn-default mt-3">Go Back To Search</a>
             `
             movieContainer.innerHTML = output
         })
