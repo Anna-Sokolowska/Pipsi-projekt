@@ -28,6 +28,7 @@ movieSearch.addEventListener('input', () => {
 
                     let iterations = Math.floor(data.totalResults / 10 + 1)
                     mergePages(iterations, searchValue)
+                    
                 } 
             })
             .catch(err => console.log(err))
@@ -42,6 +43,11 @@ movieSearch.addEventListener('input', () => {
 })
 
 const mergePages = (iterations, search) => {
+    document.getElementById("share").innerHTML +=
+    `
+    <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Share
+    </button>`
 
     for(let i = 1; i <= iterations; i++) {
         fetch(`${HOSTNAME}s=${search}&page=${i}&apikey=${API_KEY}`)
@@ -55,13 +61,16 @@ const mergePages = (iterations, search) => {
 
                 moviesResults.innerHTML +=
                 `
-                <div class="card border-0 bg-transparent movie-card" style="width: 12rem;" onclick="movieSelected('${movie.imdbID}')">
-                    <div class="card-body p-0">
+                <div class="card border-0 bg-transparent movie-card" style="width: 12rem; float: left;">
+                    <div class="card-body p-0" onclick="movieSelected('${movie.imdbID}')">
                         <img src="${(movie.Poster === 'N/A') ? 'images/no_image.png' : movie.Poster }" width="100" height="300" class="card-img-top" alt="...">
                         <h6 class="card-title text-center mt-1">${movie.Title}</h6>
+                        
                     </div>
-                </div>
-                `
+                    <div class="card-title">
+                    <button class="btn btn-secondary">Add</button> <!-- onClick >> Insert INTO SQL --->
+                    </div>
+                </div>`
             }
         })
         .catch(err => console.log(err))
