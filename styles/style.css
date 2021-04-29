@@ -31,3 +31,7 @@ html,body {
 .friend .btn {
     font-size: 13px;
 }
+
+.modal .friend {
+    cursor: pointer;
+}

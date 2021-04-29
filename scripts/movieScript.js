@@ -1,4 +1,6 @@
 const movieContainer = document.getElementById('movie-container')
+const modalFriends = document.querySelectorAll('.friend')
+const modalShareButton = document.querySelector('.disabled')
 
 const API_KEY = 'a402efe8'
 const HOSTNAME = 'http://www.omdbapi.com/?'
@@ -9,14 +11,14 @@ const getMovie = () => {
     fetch(`${HOSTNAME}i=${movieId}&apikey=${API_KEY}`)
         .then(response => response.json())
         .then(movie => {
-            console.log(movie)
-            let output = 
+            let movieView = document.createElement('div')
+            movieView.innerHTML = 
             `
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-lg-4">
                     <img src="${(movie.Poster === 'N/A') ? 'images/no_image.png' : movie.Poster }" width="300" height="500" >
                 </div>
-                <div class="col-md-8">
+                <div class="col-lg-8">
                     <h2>${movie.Title}</h2>
                     <ul class="list-group">
                     <li class="list-group-item"><strong>Genre:</strong> ${movie.Genre}</li>
@@ -28,7 +30,7 @@ const getMovie = () => {
                     <li class="list-group-item"><strong>Actors:</strong> ${movie.Actors}</li>
                     </ul>
                 </div>
-                </div>
+            </div>
                 <div class="row mt-3">
                     <div class="card p-3">
                         <h3>Plot</h3>
@@ -37,11 +39,27 @@ const getMovie = () => {
                         
                     </div>
                 </div>
-                <a href="explore.html" class="btn btn-default mt-3">Go Back To Search</a>
             `
-            movieContainer.innerHTML = output
+            movieContainer.insertBefore(movieView, document.querySelector('.btn-default'))
         })
         .catch(err => console.log(err))
 }
 
 getMovie()
+
+modalFriends.forEach(modalFriend => {
+    modalFriend.addEventListener('click', () => {
+        if(modalFriend.classList.contains('bg-primary')) {
+            modalFriend.classList.remove('bg-primary')
+        } else {
+            modalFriend.classList.add('bg-primary')
+        }
+
+        console.log(modalShareButton.innerText)
+        if([...modalFriends].some(modalFriend => modalFriend.classList.contains('bg-primary'))) {
+            modalShareButton.classList.remove('disabled')
+        } else {
+            modalShareButton.classList.add('disabled')
+        }
+    })
+})
