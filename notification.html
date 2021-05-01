@@ -10,103 +10,190 @@
     <title>Main Page</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light border-3 border-bottom border-primary">
-        <div class="container">
-          <a class="navbar-brand" href="index.html">
-              <img src="images/logo.png" width="40" alt="logo">
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="index.html">Main Page</a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light border-3 border-bottom border-primary">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+          <img src="images/logo.png" width="40" alt="logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Main Page</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="watchedMovies.html">Watched movies</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="friends.html">Friends</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="explore.html">Explore</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+
+        <div class="not-icon position-relative">
+          <i class="fas fa-bell me-5"></i>
+          <span class="position-absolute badge bg-primary">6</span>
+
+          <div class="not-list d-none shadow-sm position-absolute border bg-white">
+            <h6 class="text-center border-bottom p-1 m-0">Notifications</h6>
+            <ul class="list-unstyled">
+              <li class="border-bottom">
+                <div class="d-flex align-items-start p-2">
+                  <a href="viewProfile.html"><img class="rounded-circle" src="images/male_user.png" width="40" alt="user"></a>
+                  <div class="ms-2">
+                    <h6 class="not-message fw-bold"><a href="movie.html" class="text-dark text-decoration-none">Patryk Biernacki recommends star wars: empire strikes back</a></h6>
+                    <span class="not-time text-secondary"><i class="far fa-clock"></i> 14 min ago</span>
+                  </div>
+                </div>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="watchedMovies.html">Watched movies</a>
+              <li class="border-bottom">
+                <div class="d-flex align-items-start p-2">
+                  <a href="viewProfile.html"><img class="rounded-circle" src="images/male_user.png" width="40" alt="user"></a>
+                  <div class="ms-2">
+                    <h6 class="not-message fw-bold"><a href="movie.html" class="text-dark text-decoration-none">Patryk Biernacki recommends star wars: empire strikes back</a></h6>
+                    <span class="not-time text-secondary"><i class="far fa-clock"></i> 14 min ago</span>
+                  </div>
+                </div>
+              </li><li class="border-bottom">
+                <div class="d-flex align-items-start p-2">
+                  <a href="viewProfile.html"><img class="rounded-circle" src="images/male_user.png" width="40" alt="user"></a>
+                  <div class="ms-2">
+                    <h6 class="not-message"><a href="movie.html" class="text-dark text-decoration-none">Patryk Biernacki recommends star wars: empire strikes back</a></h6>
+                    <span class="not-time text-secondary"><i class="far fa-clock"></i> 14 min ago</span>
+                  </div>
+                </div>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="friends.html">Friends</a>
+              <li class="border-bottom">
+                <div class="d-flex align-items-start p-2">
+                  <a href="viewProfile.html"><img class="rounded-circle" src="images/male_user.png" width="40" alt="user"></a>
+                  <div class="ms-2">
+                    <h6 class="not-message fw-bold"><a href="viewProfile.html" class="text-dark text-decoration-none">Patryk Biernacki sent you a friend request</a></h6>
+                    <div class="d-flex gap-1 mt-1">
+                      <button class="btn btn-success">Accept</button>
+                      <button class="btn btn-danger">Decline</button>
+                    </div>
+                    <span class="not-time text-secondary"><i class="far fa-clock"></i> 14 min ago</span>
+                  </div>
+                </div>
               </li>
-              
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="explore.html">Explore</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+              <li class="border-bottom">
+                <div class="d-flex align-items-start p-2">
+                  <a href="viewProfile.html"><img class="rounded-circle" src="images/male_user.png" width="40" alt="user"></a>
+                  <div class="ms-2">
+                    <h6 class="not-message"><a href="viewProfile.html" class="text-dark text-decoration-none">Patryk Biernacki sent you a friend request</a></h6>
+                    <div class="d-flex gap-1 mt-1">
+                      <button class="btn btn-success">Accept</button>
+                      <button class="btn btn-danger">Decline</button>
+                    </div>
+                    <span class="not-time text-secondary"><i class="far fa-clock"></i> 14 min ago</span>
+                  </div>
+                </div>
               </li>
             </ul>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center">
+          <img class="rounded-circle" src="images/male_user.png" alt="male_user" width="50">
+          <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              User
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              
+              <li><a class="dropdown-item" href="myProfile.html">My Profile</a></li>
+              <li><a class="dropdown-item" href="notification.html">Notifications <span class="badge rounded-pill bg-primary">3</span></a></li>
+              <li><a class="dropdown-item" href="login.html">Log out</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <ul class="list-unstyled">
+    <li>
+      <div class="container not-container bg-light mt-3 p-3 rounded-3 position-relative">
+        <div class="d-flex align-items-center p-2">
+          <a href="viewProfile.html"><img class="rounded-circle" src="images/male_user.png" width="60" alt="user"></a>
+          <h6 class="ms-4 fw-bold"><a href="movie.html" class="text-dark text-decoration-none">Patryk Biernacki recommends star wars: empire strikes back</a></h6>
+          <span class="not-time-2 position-absolute text-secondary"><i class="far fa-clock"></i> 14 min ago</span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="container not-container bg-light mt-3 p-3 rounded-3 position-relative">
+        <div class="d-flex align-items-center p-2">
+          <a href="viewProfile.html"><img class="rounded-circle" src="images/male_user.png" width="60" alt="user"></a>
+          <h6 class="ms-4"><a href="movie.html" class="text-dark text-decoration-none">Patryk Biernacki recommends star wars: empire strikes back</a></h6>
+          <span class="not-time-2 position-absolute text-secondary"><i class="far fa-clock"></i> 14 min ago</span>
+      </div>
+    </div>
+    </li>
+    <li>
+      <div class="container not-container bg-light mt-3 p-3 rounded-3 position-relative">
+      <div class="d-flex align-items-center p-2">
+        <a href="viewProfile.html"><img class="rounded-circle" src="images/male_user.png" width="60" alt="user"></a>
+        <h6 class="ms-4"><a href="movie.html" class="text-dark text-decoration-none">Patryk Biernacki recommends star wars: empire strikes back</a></h6>
+        <span class="not-time-2 position-absolute text-secondary"><i class="far fa-clock"></i> 14 min ago</span>
+      </div>
+    </div>
+    </li>
+    <li>
+      <div class="container not-container bg-light mt-3 p-3 rounded-3 position-relative">
+
+        <div class="row align-items-center p-2">
+          <div class="col-xxl-10 col-xl-9 col-lg-9 col-md-8">
             <div class="d-flex align-items-center">
-              <img class="rounded-circle" src="images/male_user.png" alt="male_user" width="50">
-              <div class="dropdown">
-                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                  User
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href="myProfile.html">My Profile</a></li>
-                  <li><a class="dropdown-item" href="login.html">Log out</a></li>
-                </ul>
-              </div>
+              <a href="viewProfile.html"><img class="rounded-circle" src="images/male_user.png" width="60" alt="user"></a>
+              <h6 class="ms-4 fw-bold"><a href="viewProfile.html" class="text-dark text-decoration-none">Patryk Biernacki sent you a friend request</a></h6>
+            </div>
+          </div>
+        
+          <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4">
+            <div class="d-flex gap-2">
+              <button class="btn btn-success">Accept</button>
+              <button class="btn btn-danger">Decline</button>
             </div>
           </div>
         </div>
-      </nav>
 
-      <div class="container bg-light mt-3 p-5 rounded-3">
-          Najnowsze powiadomienia:
-          ALa ma kota
-          ALa ma kota
-          ALa ma kota
-          ALa ma kotaALa ma kota
-          ALa ma kota
-          ALa ma kota
-          ALa ma kota
-          v
-          ALa ma kota
-          
+        <span class="not-time-2 position-absolute text-secondary"><i class="far fa-clock"></i> 14 min ago</span>
       </div>
-       <div class="container bg-light mt-3 p-5 rounded-3">
-          Najnowsze powiadomienia:
-      </div>
-       <div class="container bg-light mt-3 p-5 rounded-3">
-          Najnowsze powiadomienia:
-      </div>
-       <div class="container bg-light mt-3 p-5 rounded-3">
-          Najnowsze powiadomienia:
-      </div>
-       <div class="container bg-light mt-3 p-5 rounded-3">
-          Najnowsze powiadomienia:
-      </div>
-       <div class="container bg-light mt-3 p-5 rounded-3">
-          Najnowsze powiadomienia:
-      </div>
-      <div class="container bg-light mt-3 p-5 rounded-3">
-          Najnowsze powiadomienia:
-      </div>
-       <div class="container bg-light mt-3 p-5 rounded-3">
-          Najnowsze powiadomienia:
-      </div>
-       <div class="container bg-light mt-3 p-5 rounded-3">
-          Najnowsze powiadomienia:
-      </div>
-       <div class="container bg-light mt-3 p-5 rounded-3">
-          Najnowsze powiadomienia:
-      </div>
-       <div class="container bg-light mt-3 p-5 rounded-3">
-          Najnowsze powiadomienia:
-      </div> <div class="container bg-light mt-3 p-5 rounded-3">
-          Najnowsze powiadomienia:
-      </div>
-       <div class="container bg-light mt-3 p-5 rounded-3">
-          Najnowsze powiadomienia:
-      </div>
+    </li>
+    <li>
+      <div class="container not-container bg-light mt-3 p-3 rounded-3 position-relative">
 
-      <div class="container bg-light mt-3 p-5 rounded-3">
-        Najnowsze powiadomienia:
-    </div>
+        <div class="row align-items-center p-2">
+          <div class="col-xxl-10 col-xl-9 col-lg-9 col-md-8">
+            <div class="d-flex align-items-center">
+              <a href="viewProfile.html"><img class="rounded-circle" src="images/male_user.png" width="60" alt="user"></a>
+              <h6 class="ms-4"><a href="viewProfile.html" class="text-dark text-decoration-none">Patryk Biernacki sent you a friend request</a></h6>
+            </div>
+          </div>
+        
+          <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4">
+            <div class="d-flex gap-2">
+              <button class="btn btn-success">Accept</button>
+              <button class="btn btn-danger">Decline</button>
+            </div>
+          </div>
+        </div>
 
-      <script src="scripts/script.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+        <span class="not-time-2 position-absolute text-secondary"><i class="far fa-clock"></i> 14 min ago</span>
+      </div>
+    </li>
+  </ul>
+
+  <script src="scripts/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 </body>
 </html>
