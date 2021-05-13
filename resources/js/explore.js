@@ -4,8 +4,9 @@ const moviesResults = document.getElementById('movies-results')
 movieSearch.value = ''
 var typingTimer
 
-const API_KEY = 'c0728c2a52fcc4c251aba15a5fc1a153'
-const HOSTNAME = 'https://api.themoviedb.org/3/search/movie?'
+// Link do API: http://www.omdbapi.com/apikey.aspx?__EVENTTARGET=freeAcct&__EVENTARGUMENT=&__LASTFOCUS=&__VIEWSTATE=%2FwEPDwUKLTIwNDY4MTIzNQ9kFgYCAQ9kFgICBw8WAh4HVmlzaWJsZWhkAgIPFgIfAGhkAgMPFgIfAGhkGAEFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYDBQtwYXRyZW9uQWNjdAUIZnJlZUFjY3QFCGZyZWVBY2N0oCxKYG7xaZwy2ktIrVmWGdWzxj%2FDhHQaAqqFYTiRTDE%3D&__VIEWSTATEGENERATOR=5E550F58&__EVENTVALIDATION=%2FwEdAAU%2BO86JjTqdg0yhuGR2tBukmSzhXfnlWWVdWIamVouVTzfZJuQDpLVS6HZFWq5fYpioiDjxFjSdCQfbG0SWduXFd8BcWGH1ot0k0SO7CfuulHLL4j%2B3qCcW3ReXhfb4KKsSs3zlQ%2B48KY6Qzm7wzZbR&at=freeAcct&Email=
+const API_KEY = 'a402efe8'
+const HOSTNAME = 'http://www.omdbapi.com/?'
 
 movieSearch.addEventListener('input', () => {
 
@@ -14,27 +15,27 @@ movieSearch.addEventListener('input', () => {
     typingTimer = setTimeout(() => {
 
         moviesResults.innerHTML = ''
-        fetch(`${HOSTNAME}api_key=${API_KEY}&query=${searchValue}`)
+        fetch(`${HOSTNAME}s=${searchValue}&apikey=${API_KEY}`)
             .then(response => response.json())
             .then(data => {
-                console.log(data.results)
-                if(data === undefined && searchValue !== '') {
-                    moviesResults.innerHTML =
-                        `
+
+                if(data.Search === undefined && searchValue !== '') {
+                    moviesResults.innerHTML = 
+                    `
                         <h2 class="mx-auto">Movies not found :(</h2>
                     `
                 } else {
 
-                    let iterations = Math.floor(data.results.length)
+                    let iterations = Math.floor(data.totalResults / 10 + 1)
                     mergePages(iterations, searchValue)
-
-                }
+                    
+                } 
             })
             .catch(err => console.log(err))
 
         if(searchValue === '') {
-            moviesResults.innerHTML =
-                `
+            moviesResults.innerHTML = 
+            `
                 <h2 class="mx-auto">Type something to search for movies :)</h2>
             `
         }
@@ -42,37 +43,41 @@ movieSearch.addEventListener('input', () => {
 })
 
 const mergePages = (iterations, search) => {
-    var url = "{{ route ('movie', $movie['id']}}"
+    // document.getElementById("share").innerHTML +=
+    // `
+    // <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    //     Share
+    // </button>`
+
     for(let i = 1; i <= iterations; i++) {
-        fetch(`${HOSTNAME}&query=${search}&page=${i}&api_key=${API_KEY}`)
-            .then(response => response.json())
-            .then(data => {
+        fetch(`${HOSTNAME}s=${search}&page=${i}&apikey=${API_KEY}`)
+        .then(response => response.json())
+        .then(data => {
+            
+            for(let j = 0; j < data.Search.length; j++) 
+            {
+                if(moviesResults.childElementCount >= 40) break
+                movie = data.Search[j]
 
-                for(let j = 0; j < data.results.length; j++)
-                {
-                    if(moviesResults.childElementCount >= 40) break
-                    movie = data.results[j]
-
-                    moviesResults.innerHTML +=
-                        `
+                moviesResults.innerHTML +=
+                `
                 <div class="card border-0 bg-transparent movie-card" style="width: 12rem; float: left;">
-                    <div class="card-body p-0" >
-                        <img onclick="movieSelected('${movie.id}')" src="${(movie.poster_path === 'N/A') ? 'images/no_image.png' : 'https://image.tmdb.org/t/p/w185' + movie.poster_path }" alt="...">
-                        <h6 class="card-title text-center mt-1">${movie.title}</h6>
-                        <form action="addMovie" method="post">
-                                <input type="hidden" name="user_id" value="1">
-                                <input name="movie_api_id" value="${movie.id}" type="hidden">
-                                <button type="submit" name="add" id="add" class="btn btn-primary" >Add</button>
-                            </form>
+                    <div class="card-body p-0" onclick="movieSelected('${movie.imdbID}')">
+                        <img src="${(movie.Poster === 'N/A') ? 'images/no_image.png' : movie.Poster }" width="100" height="300" class="card-img-top" alt="...">
+                        <h6 class="card-title text-center mt-1">${movie.Title}</h6>
+                        
+                    </div>
+                    <div class="card-title">
+                    <button class="btn btn-secondary">Add</button> <!-- onClick >> Insert INTO SQL --->
                     </div>
                 </div>`
-                }
-            })
-            .catch(err => console.log(err))
+            }
+        })
+        .catch(err => console.log(err))
     }
 }
 
 const movieSelected = id => {
-    document.location.href="{!! route('movie.show', id); !!}";
-
+    sessionStorage.setItem('movieId', id)
+    window.location = 'movie.html'
 }

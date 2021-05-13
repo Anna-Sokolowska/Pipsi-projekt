@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\MoviesController;
-use App\Http\Controllers\WatchedMoviesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FriendshipController;
@@ -22,11 +20,7 @@ use App\Http\Controllers\FriendshipController;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/friends', [FriendshipController::class, 'index'])->name('friends');
 Route::get('/user/{name}', [UserController::class, 'show'])->name('user.show');
-Route::put('/user/{name}', [UserController::class, 'show'])->name('user.update');
-Route::get('/movie/{movie}', [MoviesController::class, 'show']) ->name('movies.show');
-Route::get('/explore',[MoviesController::class, 'explore']) ->name('movies.explore');
-Route::get('/watchedMovies',[WatchedMoviesController::class, 'index']) ->name('watchedmovies.index');
-Route::post('/addMovie', [WatchedMoviesController::class, 'addMovie']) ->name('watchedmovies.addMovie');
+Route::put('/user/{name}', [UserController::class, 'show'])->name('user.update');;
 Auth::routes();
 
 
