@@ -2,8 +2,46 @@
 
 @section('content')
 <div id="movie-container" class="container bg-light mt-3 p-5 rounded-3">
-      
-    <a href="explore.html" class="btn btn-default mt-3">Go Back To Search</a>
+
+    <div class="row">
+        <div class="col-lg-4">
+            <img src="{{$movie['poster_path']}}" >
+        </div>
+        <div class="col-lg-8">
+            @if(Session::get('success'))
+                <div class="alert alert-success">
+                    {{Session::get('success')}}
+                </div>
+            @elseif(Session::get('failed'))
+                <div class="alert alert-danger">
+                    {{Session::get('failed')}}
+                </div>
+            @endif
+            <form style="text-align: right" action="../addMovie" method="post">
+                {{csrf_field()}}
+                <input type="hidden" name="user_id" value="1">
+                <input name="movie_api_id" value="{{$movie['id']}}" type="hidden">
+                <button type="submit" name="add" id="add" class="btn btn-primary" >Add</button>
+            </form>
+            <h2>{{$movie['title']}}</h2>
+            <ul class="list-group">
+                <li class="list-group-item"><strong>Genre:</strong> {{$movie['genres']}}</li>
+                <li class="list-group-item"><strong>Released:</strong> {{$movie['release_date']}}</li>
+                <li class="list-group-item"><strong>Rated:</strong> {{$movie['vote_average']}}</li>
+                <li class="list-group-item"><strong>Director:</strong> {{$movie['director']}}</li>
+                <li class="list-group-item"><strong>Writer:</strong> {{$movie['writer']}}</li>
+                <li class="list-group-item"><strong>Actors:</strong> {{$movie['cast']}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="card p-3">
+            <h3>Plot</h3>
+            {{$movie['overview']}}
+            <hr>
+
+        </div>
+    </div>
 
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -68,9 +106,8 @@
             </div>
             </div>
         </div>
-    </div>         
+    </div>
   </div>
 @endsection
-@section('scripts') 
-<script src="{{ asset('js/movieScript.js') }}"></script>
+@section('scripts')
 @endsection

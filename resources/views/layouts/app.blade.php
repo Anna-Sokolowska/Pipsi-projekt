@@ -12,7 +12,7 @@
 <body>
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light border-3 border-bottom border-primary">
-    <div class="container">s
+    <div class="container">
       <a class="navbar-brand" href="{{ url('/') }}">
           <img src="{{ asset('images/logo.png') }}" width="40" alt="logo">
       </a>
@@ -25,12 +25,12 @@
             <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}">Main Page</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="watchedMovies.html">Watched movies</a>
+            <a class="nav-link" {{Request::is('watchedMovies*') ? 'active' : ''}} aria-current="page" href="/watchedMovies">{{ __('WatchedMovies')}}</a>
           </li>
           <li class="nav-item">
             <a class="nav-link {{ Request::is('friends*') ? 'active' : '' }}" aria-current="page" href="{{ route('friends') }}">{{ __('Friends') }}</a>
           </li>
-          
+
           <li class="nav-item">
             <a class="nav-link {{ Request::is('explore*') ? 'active' : '' }}" aria-current="page" href="/explore">{{ __('Explore') }}</a>
           </li>
@@ -110,13 +110,13 @@
           @else
             <img class="rounded-circle" src="{{ asset('images/male_user.png') }}" alt="male_user" width="50">
           @endif
-          
+
           <div class="dropdown">
             <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               {{ Auth::user()->name }}
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              
+
               <li><a class="dropdown-item" href="{{ route('user.show', Auth::user()->username) }}">My Profile</a></li>
               <li><a class="dropdown-item" href="notification.html">Notifications <span class="badge rounded-pill bg-primary">3</span></a></li>
               <li><a class="dropdown-item" ref="{{ route('logout') }}"
@@ -130,6 +130,11 @@
             </ul>
           </div>
         </div>
+          <div>
+          <a href="https://www.themoviedb.org/">
+          <img src="{{ asset('images/api_logo.svg') }}" style="height: 20%;width: 20%;">
+          </a>
+          </div>
       </div>
     </div>
   </nav>
