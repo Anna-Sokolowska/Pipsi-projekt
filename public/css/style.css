@@ -11,7 +11,7 @@
 }
 
 html,body {
-    background-image: url(/images/background.jpeg?fc9fb2c89d97f15c69c5dc61179c23dc);
+    /*background-image: url(/images/background.jpeg?fc9fb2c89d97f15c69c5dc61179c23dc);*/
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
@@ -32,16 +32,6 @@ html,body {
 
 .modal .friend {
     cursor: pointer;
-}
-.slider{
-    max-height: 410px;
-    border: 0px;
-    overflow :auto;
-}
-.slider .card{
-    height:345px;
-    line-height:300px;
-    text-align: center;
 }
 
 /***** Notifications *****/
