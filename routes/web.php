@@ -19,8 +19,14 @@ use App\Http\Controllers\FriendshipController;
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/friends', [FriendshipController::class, 'index'])->name('friends');
-Route::get('/user/{name}', [UserController::class, 'show'])->name('user.show');
-Route::put('/user/{name}', [UserController::class, 'show'])->name('user.update');;
+Route::get('/user/{username}', [UserController::class, 'show'])->name('user.show');
+Route::put('/user/{username}', [UserController::class, 'update'])->name('user.update');
+Route::put('/friends', [FriendshipController::class, 'update']);
+Route::post('/friends/sendFriendRequest', [FriendshipController::class, 'sendFriendRequest']);
+Route::post('/friends/acceptFriendRequest', [FriendshipController::class, 'acceptFriendRequest']);
+Route::post('/friends/declineFriendRequest', [FriendshipController::class, 'declineFriendRequest']);
+Route::post('/friends/removeFriend', [FriendshipController::class, 'removeFriend']);
+Route::post('/friends/search', [FriendshipController::class, 'search']);
 Auth::routes();
 
 

@@ -30,69 +30,34 @@ class FriendshipController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function sendFriendRequest(Request $request){
+        $recipient = User::find($request->recipientID);
+        $this->user->befriend($recipient);
+        return response()->json(['success'=>'Ajax request submitted successfully']);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function acceptFriendRequest(Request $request){
+        $sender = User::find($request->senderID);
+        $this->user->acceptFriendRequest($sender);
+        return response()->json(['success'=>'Ajax request submitted successfully']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function declineFriendRequest(Request $request){
+        $sender = User::find($request->senderID);
+        $this->user->denyFriendRequest($sender);
+        return response()->json(['success'=>'Ajax request submitted successfully']);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function removeFriend(Request $request){
+        $friend = User::find($request->friendID);
+        $this->user->unfriend($friend);
+        return response()->json(['success'=>'Ajax request submitted successfully']);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+    public function search(Request $request){
+        $key = $request->key;
+        $users = User::select('id', 'username')->where('username', 'like', '%' . $key . '%')->limit(5)->get();
+        return view('components.foundUser',  ['users' => $users]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

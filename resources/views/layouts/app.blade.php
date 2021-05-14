@@ -12,7 +12,7 @@
 <body>
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light border-3 border-bottom border-primary">
-    <div class="container">s
+    <div class="container">
       <a class="navbar-brand" href="{{ url('/') }}">
           <img src="{{ asset('images/logo.png') }}" width="40" alt="logo">
       </a>

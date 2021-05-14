@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use App\Http\Requests\StoreUserRequest;
 
 class UserController extends Controller
 {
@@ -57,12 +58,10 @@ class UserController extends Controller
      */
     public function show($username)
     {
-        $user = User::where('username', $username) -> firstOrFail();
-
-        if ($username === Auth::user()->username) {
+        $user = User::select('name', 'last_name', 'gender', 'username', 'email', 'phone', 'city', 'country', 'date_of_birth') -> where('username', $username) -> firstOrFail();
+        if ($username === $this->user->username) {
             return view('myProfile', ['user' => $user]);
         }
-        
         else{
             return view('viewProfile', ['user' => $user]);
         }
@@ -84,12 +83,14 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  string  $username
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUserRequest $request, $username)
     {
-        //
+        $user = User::where('username', $username) -> firstOrFail();
+        $user->update($request->validated());
+        return redirect()->route('user.show', $username);
     }
 
     /**
@@ -102,5 +103,6 @@ class UserController extends Controller
     {
         //
     }
+
 
 }
