@@ -5,7 +5,7 @@
      <div class="row justify-content-center">
          <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-9 col-sm-12">
              <div class="input-group mb-3 ">
-                 <span class="input-group-text text-light bg-primary">Search</span>
+                 {{-- <span class="input-group-text text-light bg-primary">Search</span> --}}
                  <input id="movie-search" type="text" class="form-control" placeholder="Search for movies..." aria-label="Username" aria-describedby="basic-addon1">
              </div>
          </div>

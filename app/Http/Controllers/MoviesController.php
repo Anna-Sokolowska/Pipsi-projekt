@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\WatchedMovies;
 use App\ViewModels\MovieModel;
 use App\ViewModels\MoviesModel;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class MoviesController extends Controller
@@ -60,7 +61,7 @@ class MoviesController extends Controller
             $movie,
         );
 
-        return view('movie', $viewModel);
+        return view('movie', $viewModel)->with('friends', Auth::user()->getFriends($perPage = 20));
     }
 
     /**

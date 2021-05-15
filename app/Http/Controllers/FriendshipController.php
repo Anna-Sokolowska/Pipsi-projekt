@@ -33,30 +33,44 @@ class FriendshipController extends Controller
     public function sendFriendRequest(Request $request){
         $recipient = User::find($request->recipientID);
         $this->user->befriend($recipient);
-        return response()->json(['success'=>'Ajax request submitted successfully']);
+        return response()->json([
+            'success' => 'declineFriendRequest',
+        ]);
     }
 
     public function acceptFriendRequest(Request $request){
         $sender = User::find($request->senderID);
         $this->user->acceptFriendRequest($sender);
-        return response()->json(['success'=>'Ajax request submitted successfully']);
+        $request->session()->flash('success', 'Friend request accepted');
+        return response()->json([
+            'success'=>'Friend request accepted'
+        ]);
     }
 
     public function declineFriendRequest(Request $request){
         $sender = User::find($request->senderID);
         $this->user->denyFriendRequest($sender);
-        return response()->json(['success'=>'Ajax request submitted successfully']);
+        $request->session()->flash('success', 'Friend request denied');
+        return response()->json([
+            'success'=>'Friend request denied'
+        ]);
     }
 
     public function removeFriend(Request $request){
         $friend = User::find($request->friendID);
         $this->user->unfriend($friend);
-        return response()->json(['success'=>'Ajax request submitted successfully']);
+        $request->session()->flash('success', 'Friend removed');
+        return response()->json([
+            'success'=>'Friend removed']
+        );
     }
 
     public function search(Request $request){
         $key = $request->key;
-        $users = User::select('id', 'username')->where('username', 'like', '%' . $key . '%')->limit(5)->get();
+        $users = User::select('id', 'username', 'name', 'last_name')
+            ->where('username', 'like', '%' . $key . '%')
+            ->limit(5)
+            ->get();
         return view('components.foundUser',  ['users' => $users]);
     }
 

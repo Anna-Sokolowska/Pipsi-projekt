@@ -119,7 +119,7 @@ function sendFriendRequest(recipientID){
         },
         cache: false,
         success:function(response) {
-            $("#btn_add_friend_"+recipientID).css("background-color", "gray");       
+            $("#btn_add_friend_"+recipientID).css("background-color", "gray");  
         }     
     });
 }

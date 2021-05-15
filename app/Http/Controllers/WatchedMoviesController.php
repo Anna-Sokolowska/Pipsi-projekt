@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\WatchedMovies;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class WatchedMoviesController extends Controller
@@ -15,9 +16,18 @@ class WatchedMoviesController extends Controller
      * @return \Illuminate\Http\Response
      */
     protected $user;
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware(function ($request, $next) {
+            $this->user = Auth::user();
+            return $next($request);
+        });
+    }
+    
     public function index()
     {
-        $watchedMovies = WatchedMovies::all()->toArray();
+        $watchedMovies = WatchedMovies::where('user_id', $this->user->id)->get()->toArray();
         foreach ($watchedMovies as &$movie){
             $details = [];
             $details = collect( Http::withToken(config('services.tmbd.token'))

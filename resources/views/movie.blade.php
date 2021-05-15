@@ -58,46 +58,22 @@
             </div>
             <div class="modal-body">
                 <ul class="list-group list-unstyled px-">
-                    <li class="friend list-group-item mb-2">
-                        <div class="d-flex align-items-center flex-wrap">
-                            <div>
-                                <img class="rounded-circle" src='images/male_user.png' width="50" />
-                                <span class="ms-3">Andres Iniesta</span>
+                    @foreach ($friends as $friend)
+                        <li class="friend list-group-item mb-2">
+                            <div class="d-flex align-items-center flex-wrap">
+                                <div>
+                                    <img class="rounded-circle" src='{{ asset('images/male_user.png') }}' width="50" />
+                                    <span class="ms-3">
+                                        {{ $friend->name . ' ' . $friend->last_name }}
+                                    </span>
+                                    <span class="text-muted">
+                                        {{ ' (' . $friend->username . ')' }}
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <li class="friend list-group-item mb-2">
-                        <div class="d-flex align-items-center flex-wrap">
-                            <div>
-                                <img class="rounded-circle" src='images/male_user.png' width="50" />
-                                <span class="ms-3">Andres Iniesta</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="friend list-group-item mb-2">
-                      <div class="d-flex align-items-center flex-wrap">
-                          <div>
-                              <img class="rounded-circle" src='images/male_user.png' width="50" />
-                              <span class="ms-3">Andres Iniesta</span>
-                          </div>
-                      </div>
-                  </li>
-                  <li class="friend list-group-item mb-2">
-                    <div class="d-flex align-items-center flex-wrap">
-                        <div>
-                            <img class="rounded-circle" src='images/male_user.png' width="50" />
-                            <span class="ms-3">Andres Iniesta</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="friend list-group-item mb-2">
-                  <div class="d-flex align-items-center flex-wrap">
-                      <div>
-                          <img class="rounded-circle" src='images/male_user.png' width="50" />
-                          <span class="ms-3">Andres Iniesta</span>
-                      </div>
-                  </div>
-              </li>
+                        </li>
+                    @endforeach
+                    {{ $friends->links() }}
                 </ul>
             </div>
             <div class="modal-footer">

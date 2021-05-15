@@ -2,7 +2,10 @@
 
 @section('content')
  <div class="container mx-auto bg-light mt-3 p-5 rounded-3">
-     <h2>Last watched movies:</h2>
+    <h2>Last watched movies:</h2>
+    @if($watchedMovies->isEmpty())
+        <span class="text-muted">You haven't watched any movies yet</span>
+    @endif
      <div id="watched-movie" class="d-flex flex-wrap gap-5 p-4">
          @foreach($watchedMovies as $movie)
              <div class="card border-0 bg-transparent movie-card" style="width: 12rem;">
