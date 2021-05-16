@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ViewModels\WatchedMoviesView;
 use Illuminate\Http\Request;
 use App\Models\WatchedMovies;
 use Illuminate\Support\Facades\DB;
@@ -15,38 +16,73 @@ class WatchedMoviesController extends Controller
      * @return \Illuminate\Http\Response
      */
     protected $user;
+<<<<<<< Updated upstream
+=======
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware(function ($request, $next) {
+            $this->user = Auth::user();
+            return $next($request);
+        });
+    }
+>>>>>>> Stashed changes
     public function index()
     {
         $watchedMovies = WatchedMovies::all()->toArray();
         foreach ($watchedMovies as &$movie){
+            $id = $movie['id'];
             $details = [];
             $details = collect( Http::withToken(config('services.tmbd.token'))
                 ->get('https://api.themoviedb.org/3/movie/'.$movie['movie_api_id'])
                 ->json())->toArray();
             $movie = array_merge($movie, $details);
+            $movie['id'] = $id;
         }
+        $viewModel = new WatchedMoviesView(
+            $watchedMovies,
+        );
 
-        return view('watchedMovies', compact('watchedMovies'));
+        return view('watchedMovies', $viewModel);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param $id
+     * @return void
      */
     public function addMovie(Request $request)
     {
         $request -> validate([
-            'user_id' => 'required',
             'movie_api_id' => 'required',
         ]);
-        $query = DB::table('watched_movies')->insert([
-            'user_id'=>$request->input('user_id'),
-            'movie_api_id'=>$request->input('movie_api_id'),
-        ]);
-
-        if ($query){
-            return back()->with('success','Add to Watched');
+        $check = WatchedMovies::where([
+            ['user_id',$this->user->id],
+            ['movie_api_id',$request->input('movie_api_id')]
+        ])->get()->toArray();
+        if (!$check) {
+            $query = DB::table('watched_movies')->insert([
+                'user_id' => $this->user->id,
+                'movie_api_id' => $request->input('movie_api_id'),
+            ]);
+            if ($query) {
+                return back()->with('success', 'Add to Watched');
+            } else {
+                return back()->with('failed', 'Not This Time');
+            }
+        }
+        else{
+            return back()->with('failed', 'Not This Time');
+        }
+    }
+    public function removeMovie($movie_id){
+        $delete = DB::table('watched_movies')->where([
+            ['user_id',$this->user->id],
+        ['movie_api_id', $movie_id]])->delete();
+        if ($delete){
+            return back()->with('success','Movie Deleted');
         }else{
             return back()->with('failed', 'Not This Time');
         }

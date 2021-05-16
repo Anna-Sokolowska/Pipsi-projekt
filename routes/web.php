@@ -27,6 +27,11 @@ Route::get('/movie/{movie}', [MoviesController::class, 'show']) ->name('movies.s
 Route::get('/explore',[MoviesController::class, 'explore']) ->name('movies.explore');
 Route::get('/watchedMovies',[WatchedMoviesController::class, 'index']) ->name('watchedmovies.index');
 Route::post('/addMovie', [WatchedMoviesController::class, 'addMovie']) ->name('watchedmovies.addMovie');
+<<<<<<< Updated upstream
+=======
+Route::get('/removeMovie/{id}', [WatchedMoviesController::class, 'removeMovie']) ->name('watchedmovies.removeMovie');
+
+>>>>>>> Stashed changes
 Auth::routes();
 
 

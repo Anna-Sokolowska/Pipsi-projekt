@@ -19,7 +19,14 @@ html,body {
     font-family: 'Numans', sans-serif;
 }
 
+<<<<<<< Updated upstream
 .movie-card:hover {
+=======
+.card-body img:hover {
+    cursor: pointer;
+}
+.card-body h6:hover {
+>>>>>>> Stashed changes
     cursor: pointer;
 }
 
@@ -98,6 +105,18 @@ html,body {
     font-size: 14px;
 }
 
+<<<<<<< Updated upstream
+=======
+main .container{
+    min-height: 90vh;
+}
+
+.main_alert{
+    width: 100%;
+    z-index: 1000;
+}
+
+>>>>>>> Stashed changes
 @media (max-width: 975px) {
     .not-icon {
         position: absolute;
