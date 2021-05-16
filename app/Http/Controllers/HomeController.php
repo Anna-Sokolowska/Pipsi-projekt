@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\WatchedMovies;
-use App\ViewModels\MoviesModel;
 use Illuminate\Http\Request;
+use App\Models\WatchedMovies;
+use App\ViewModels\HomePageView;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
@@ -16,7 +17,11 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
+        $this->middleware(function ($request, $next) {
+            $this->user = Auth::user();
+            return $next($request);
+        });
     }
 
     /**
@@ -29,7 +34,7 @@ class HomeController extends Controller
         $popularMovies = Http::withToken(config('services.tmbd.token'))
             ->get('https://api.themoviedb.org/3/movie/popular')
             -> json()['results'];
-        $watchedMovies = WatchedMovies::all()->toArray();
+        $watchedMovies = WatchedMovies::where('user_id', $this->user->id)->get()->toArray();
         foreach ($watchedMovies as &$movie){
             $id = $movie['id'];
             $details = [];
@@ -39,10 +44,11 @@ class HomeController extends Controller
             $movie = array_merge($movie, $details);
             $movie['id'] = $id;
         }
-        $viewModel = new MoviesModel(
+        $viewModel = new HomePageView(
             $popularMovies,
             $watchedMovies,
         );
+
         return view('home', $viewModel);
     }
 }

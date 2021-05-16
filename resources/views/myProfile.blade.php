@@ -52,7 +52,7 @@
                                     </div>
                                     <div class="col-lg-8 col-7">
                                         <ul class="list-unstyled">
-                                            <li>{{ $user->name }}</li>
+                                            <li>{{ $user->name  }}</li>
                                             <li>{{ $user->last_name }}</li>
                                             <li>{{ $user->birth_of_date }}</li>
                                             <li>{{ $user->gender }}</li>
@@ -87,16 +87,16 @@
 
                 <div id="edit-profile-data" class="card mt-3 visually-hidden">
                     <div class="card-body p-5">
-                        <form method="POST" action="">
+                        <form method="POST" action="{{ route('user.update', $user->username) }}">
                             @method('PUT')
                             @csrf
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Firstname</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Firstname" value="{{ $user->name }}">
+                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Firstname" value="{{ $user->name }}" name="name" required>
                               </div>
                               <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Lastname</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Lastname" value="{{ $user->last_name }}">
+                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Lastname" value="{{ $user->last_name }}" name="last_name" required>
                               </div>
 
                               <span class="mt-3">Date of Birth</span>
@@ -116,7 +116,7 @@
                               <span>Gender</span>
                               <div class="d-flex mt-2 mb-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                    <input class="form-check-input" type="radio" id="flexRadioDefault1" name="gender" value="male" checked>
                                     <label class="form-check-label" for="flexRadioDefault1">
                                     Male
                                     </label>
@@ -131,21 +131,21 @@
                             </div>
                               <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label"></label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Country" value="{{ $user->country }}">
+                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Country" value="{{ $user->country }}" name="country">
                               </div>
                               <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">City</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="City">
+                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="City" value="{{ $user->city }}" name="city">
                               </div>
                               <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Phone number</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Phone number">
+                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Phone number" value="{{ $user->phone }}" name="phone">
                               </div>
                               <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email Adress" value="{{ $user->email }}" readonly>
+                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Email Adress" value="{{ $user->email }}" readonly>
                               </div>
-                              <input class="btn btn-primary w-25 mt-2" type="submit" value="Save">
+                              <input class="btn btn-primary w-25 mt-2" type="submit" value="Save" onclick="return confirm('Are you sure to save changes?')">
                         </form>
                     </div>
                 </div>

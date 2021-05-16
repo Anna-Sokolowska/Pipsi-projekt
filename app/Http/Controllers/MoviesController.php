@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\WatchedMovies;
-use App\ViewModels\MovieModel;
-use App\ViewModels\MoviesModel;
 use Illuminate\Http\Request;
+use App\Models\WatchedMovies;
+use App\ViewModels\MovieView;
+use App\ViewModels\HomePageView;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class MoviesController extends Controller
@@ -56,11 +57,10 @@ class MoviesController extends Controller
         $movie = Http::withToken(config('services.tmbd.token'))
             ->get('https://api.themoviedb.org/3/movie/'.$id.'?&append_to_response=credits')
             -> json();
-        $viewModel = new MovieModel(
+        $viewModel = new MovieView(
             $movie,
         );
-
-        return view('movie', $viewModel);
+        return view('movie', $viewModel)->with('friends', Auth::user()->getFriends($perPage = 20));
     }
 
     /**

@@ -13,6 +13,7 @@
 
 html,body {
     /*background-image: url('../images/background.jpeg');*/
+    background-color: #232323;
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
@@ -23,7 +24,7 @@ html,body {
 .card-body img:hover {
     cursor: pointer;
 }
-.card-body a:hover {
+.card-body h6:hover {
     cursor: pointer;
 }
 
@@ -100,6 +101,15 @@ html,body {
     bottom: 1%;
     right: 1%;
     font-size: 14px;
+}
+
+main .container{
+    min-height: 90vh;
+}
+
+.main_alert{
+    width: 100%;
+    z-index: 1000;
 }
 
 @media (max-width: 975px) {

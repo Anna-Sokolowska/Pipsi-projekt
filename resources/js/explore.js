@@ -17,7 +17,6 @@ movieSearch.addEventListener('input', () => {
         fetch(`${HOSTNAME}api_key=${API_KEY}&query=${searchValue}`)
             .then(response => response.json())
             .then(data => {
-                console.log(data.results)
                 if(data === undefined && searchValue !== '') {
                     moviesResults.innerHTML =
                         `
@@ -42,7 +41,6 @@ movieSearch.addEventListener('input', () => {
 })
 
 const mergePages = (iterations, search) => {
-    var url = "{{ route ('movie', $movie['id']}}"
     for(let i = 1; i <= iterations; i++) {
         fetch(`${HOSTNAME}&query=${search}&page=${i}&api_key=${API_KEY}`)
             .then(response => response.json())
@@ -57,12 +55,11 @@ const mergePages = (iterations, search) => {
                         `
                 <div class="card border-0 bg-transparent movie-card" style="width: 12rem; float: left;">
                     <div class="card-body p-0" >
-                        <img onclick="movieSelected('${movie.id}')" src="${(movie.poster_path === 'N/A') ? 'images/no_image.png' : 'https://image.tmdb.org/t/p/w185' + movie.poster_path }" alt="...">
+                        <img onclick="window.location.href='/movie/${movie.id}'" src="${(movie.poster_path === 'N/A') ? 'images/no_image.png' : 'https://image.tmdb.org/t/p/w185' + movie.poster_path }" alt=${movie.title}>
                         <h6 class="card-title text-center mt-1">${movie.title}</h6>
                         <form action="addMovie" method="post">
-                                <input type="hidden" name="user_id" value="1">
                                 <input name="movie_api_id" value="${movie.id}" type="hidden">
-                                <button type="submit" name="add" id="add" class="btn btn-primary" >Add</button>
+                                <button type="submit" name="add" class="btn btn-primary" >Add</button>
                             </form>
                     </div>
                 </div>`
@@ -72,7 +69,3 @@ const mergePages = (iterations, search) => {
     }
 }
 
-const movieSelected = id => {
-    document.location.href="{!! route('movie.show', id); !!}";
-
-}
