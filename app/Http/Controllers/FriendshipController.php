@@ -33,6 +33,7 @@ class FriendshipController extends Controller
     public function sendFriendRequest(Request $request){
         $recipient = User::find($request->recipientID);
         $this->user->befriend($recipient);
+        $request->session()->flash('success', 'Friend request sent');
         return response()->json([
             'success' => 'declineFriendRequest',
         ]);
