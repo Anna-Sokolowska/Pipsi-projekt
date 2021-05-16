@@ -41,45 +41,44 @@
                     <div class="card-body p-4">
                         <div class="row profile-list">
                             <div class="col-lg-6">
-                                <div class="row">
-                                    <div class="col-lg-4 col-5">
-                                        <ul class="list-unstyled">
-                                            <li>Firstname: </li>
-                                            <li>Lastname: </li>
-                                            <li>Birthday: </li>
-                                            <li>Gender: </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-8 col-7">
-                                        <ul class="list-unstyled">
-                                            <li>{{ $user->name  }}</li>
-                                            <li>{{ $user->last_name }}</li>
-                                            <li>{{ $user->birth_of_date }}</li>
-                                            <li>{{ $user->gender }}</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                
+                            <table class="w-75">
+                                <tr class="d-flex">
+                                  <td class="w-50">Firstname: </td>
+                                  <td>{{ $user->name }}</td>
+                                </tr>
+                                <tr class="d-flex">
+                                  <td class="w-50">LastName: </td>
+                                  <td>{{ $user->last_name }}</td>
+                                </tr>
+                                <tr class="d-flex">
+                                  <td class="w-50">Birthday: </td>
+                                  <td>{{ $user->birth_of_date }}</td>
+                                </tr>
+                                <tr class="d-flex">
+                                  <td class="w-50">Gender: </td>
+                                  <td>{{ $user->gender }}</td>
+                                </tr>
+                              </table> 
                             </div>
                             <div class="col-lg-6">
-                                <div class="row">
-                                    <div class="col-lg-4 col-6">
-                                        <ul class="list-unstyled">
-                                            <li>Country: </li>
-                                            <li>City: </li>
-                                            <li>Phone number: </li>
-                                            <li>Email: </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-6 col-6">
-                                        <ul class="list-unstyled">
-                                            <li>{{ $user->country }}</li>
-                                            <li>{{ $user->city }}</li>
-                                            <li>{{ $user->phone }}</li>
-                                            <li>{{ $user->email }}</li>
-                                        </ul>
-                                    </div>
-                                </div>    
+                            <table class="w-75">
+                                <tr class="d-flex">
+                                  <td class="w-50">Country: </td>
+                                  <td>{{ $user->country }}</td>
+                                </tr>
+                                <tr class="d-flex">
+                                  <td class="w-50">City: </td>
+                                  <td>{{ $user->city }}</td>
+                                </tr>
+                                <tr class="d-flex">
+                                  <td class="w-50">Phone number: </td>
+                                  <td>{{ $user->phone }}</td>
+                                </tr>
+                                <tr class="d-flex">
+                                  <td class="w-50">E-mail: </td>
+                                  <td>{{ $user->email }}</td>
+                                </tr>
+                              </table>
                             </div>
                         </div>
                     </div>

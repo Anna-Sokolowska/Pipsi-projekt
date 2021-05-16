@@ -88,3 +88,22 @@ input:focus{
 .form-check label {
     color: var(--white);
 }
+
+#alert-message {
+    width: 243px;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.form-group {
+    position: relative;
+    margin-top: 30px;
+}
+
+.alert-message {
+    position: absolute;
+    top: 38px;
+    font-size: 15px;
+    color: #E50914;
+}

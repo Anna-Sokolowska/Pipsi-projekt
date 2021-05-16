@@ -1,5 +1,6 @@
 const notList = document.querySelector('.not-list')
 const notIcon = document.querySelector('.not-icon')
+const alert = document.querySelector('.alert-success')
 
 window.addEventListener('click', (e) => {
     if(notIcon.contains(e.target)) {
@@ -18,3 +19,7 @@ window.addEventListener('click', (e) => {
         }) 
     }
 }, false)
+
+setTimeout(() => {
+    alert.classList.add('d-none')
+}, 10000)
