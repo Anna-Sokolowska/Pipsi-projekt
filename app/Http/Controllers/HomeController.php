@@ -3,13 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\WatchedMovies;
-<<<<<<< Updated upstream
 use App\ViewModels\MoviesModel;
 use Illuminate\Http\Request;
-=======
-use App\ViewModels\HomePageView;
-use Illuminate\Support\Facades\Auth;
->>>>>>> Stashed changes
 use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
@@ -44,11 +39,10 @@ class HomeController extends Controller
             $movie = array_merge($movie, $details);
             $movie['id'] = $id;
         }
-        $viewModel = new HomePageView(
+        $viewModel = new MoviesModel(
             $popularMovies,
             $watchedMovies,
         );
-
         return view('home', $viewModel);
     }
 }

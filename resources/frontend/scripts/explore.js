@@ -47,30 +47,32 @@ const mergePages = (iterations, search) => {
         fetch(`${HOSTNAME}&query=${search}&page=${i}&api_key=${API_KEY}`)
             .then(response => response.json())
             .then(data => {
+
                 for(let j = 0; j < data.results.length; j++)
                 {
                     if(moviesResults.childElementCount >= 40) break
                     movie = data.results[j]
 
-                    moviesResults.innerHTML +=`
+                    moviesResults.innerHTML +=
+                        `
                 <div class="card border-0 bg-transparent movie-card" style="width: 12rem; float: left;">
                     <div class="card-body p-0" >
-                        <img onclick="window.location.href='/movie/${movie.id}'" src="${(movie.poster_path === 'N/A') ? 'images/no_image.png' : 'https://image.tmdb.org/t/p/w185' + movie.poster_path }" alt="...">
+                        <img onclick="movieSelected('${movie.id}')" src="${(movie.poster_path === 'N/A') ? 'images/no_image.png' : 'https://image.tmdb.org/t/p/w185' + movie.poster_path }" alt="...">
                         <h6 class="card-title text-center mt-1">${movie.title}</h6>
                         <form action="addMovie" method="post">
                                 <input type="hidden" name="user_id" value="1">
                                 <input name="movie_api_id" value="${movie.id}" type="hidden">
-                                <button type="submit" name="add" id="add" class="btn btn-secondary" >Add</button>
+                                <button type="submit" name="add" id="add" class="btn btn-primary" >Add</button>
                             </form>
                     </div>
-                </div><?php dd() ?>`
+                </div>`
                 }
-             })
+            })
             .catch(err => console.log(err))
     }
 }
 
 const movieSelected = id => {
-    window.location.href="{{ url('/movie.show/'. $id). }}";
+    document.location.href="{!! route('movie.show', id); !!}";
 
 }

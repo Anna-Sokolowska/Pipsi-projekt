@@ -23,7 +23,7 @@ html,body {
 .card-body img:hover {
     cursor: pointer;
 }
-.card-body h6:hover {
+.card-body a:hover {
     cursor: pointer;
 }
 
@@ -102,18 +102,6 @@ html,body {
     font-size: 14px;
 }
 
-<<<<<<< Updated upstream
-=======
-main .container{
-    min-height: 90vh;
-}
-
-.main_alert{
-    width: 100%;
-    z-index: 1000;
-}
-
->>>>>>> Stashed changes
 @media (max-width: 975px) {
     .not-icon {
         position: absolute;
