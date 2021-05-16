@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\MoviesController;
-use App\Http\Controllers\WatchedMoviesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\FriendshipController;
+use App\Http\Controllers\WatchedMoviesController;
 
 /*
 |--------------------------------------------------------------------------
