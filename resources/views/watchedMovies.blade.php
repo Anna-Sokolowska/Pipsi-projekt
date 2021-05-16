@@ -9,9 +9,13 @@
         @endif
         @foreach($watchedMovies as $movie)
             <div class="card border-0 bg-transparent movie-card" style="width: 12rem;">
-                <div class="card-body p-0">
-                    <img onclick="window.location='{{url('movie', $movie['id'])}}'" src="{{'https://image.tmdb.org/t/p/w185'.$movie['poster_path']}}" alt="{{$movie['title']}}">
-                    <h6 onclick="window.location='{{url('movie', $movie['id'])}}'" class="card-title text-center mt-1">{{$movie['title']}}</h6>
+                <div class="card-body text-truncate p-0">
+                    <img class="p-1" onclick="window.location='{{url('movie', $movie['movie_id'])}}'" src="{{$movie['poster_path']}}" alt="{{$movie['title']}}">
+                    <h6 onclick="window.location='{{url('movie', $movie['movie_id'])}}'" class="card-title text-center mt-1 p-1">{{$movie['title']}}</h6>
+                    <form class="p-1 align-text-bottom" action="removeMovie/{{$movie['movie_id']}}" method="get">
+                        @csrf
+                        <button  type="submit" class="btn btn-primary">Remove</button>
+                    </form>
                 </div>
             </div>
         @endforeach

@@ -8,21 +8,17 @@
             <img src="{{$movie['poster_path']}}" >
         </div>
         <div class="col-lg-8">
-            @if(Session::get('success'))
-                <div class="alert alert-success">
-                    {{Session::get('success')}}
-                </div>
-            @elseif(Session::get('failed'))
-                <div class="alert alert-danger">
-                    {{Session::get('failed')}}
-                </div>
-            @endif
-            <form style="text-align: right" action="../addMovie" method="post">
-                {{csrf_field()}}
-                <input type="hidden" name="user_id" value="1">
-                <input name="movie_api_id" value="{{$movie['id']}}" type="hidden">
-                <button type="submit" name="add" id="add" class="btn btn-primary" >Add</button>
-            </form>
+            <div class="d-flex pb-2">
+                <button type="button" class="btn btn-primary mt-3 wid" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Share
+                </button>
+                <form style="text-align: right; width:100%" action="../addMovie" method="post">
+                    {{csrf_field()}}
+                    <input name="movie_api_id" value="{{$movie['id']}}" type="hidden">
+                    <button type="submit" name="add" id="add" class="btn btn-primary mt-3" >Add</button>
+                </form>
+            </div>
+
             <h2>{{$movie['title']}}</h2>
             <ul class="list-group">
                 <li class="list-group-item"><strong>Genre:</strong> {{$movie['genres']}}</li>
@@ -43,11 +39,6 @@
         </div>
     </div>
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Share
-    </button>
-
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -57,23 +48,41 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+<<<<<<< HEAD
                 <ul class="list-group list-unstyled px-">
                     @foreach ($friends as $friend)
                         <li class="friend list-group-item mb-2">
+=======
+                <ul class="list-group list-unstyled px-2">
+                        @foreach ($friends as $friend)
+                        <li class="friend list-group-item mb-2 mt-1">
+>>>>>>> origin/movies
                             <div class="d-flex align-items-center flex-wrap">
                                 <div>
                                     <img class="rounded-circle" src='{{ asset('images/male_user.png') }}' width="50" />
                                     <span class="ms-3">
+<<<<<<< HEAD
                                         {{ $friend->name . ' ' . $friend->last_name }}
                                     </span>
                                     <span class="text-muted">
                                         {{ ' (' . $friend->username . ')' }}
+=======
+                                         {{ $friend->name . ' ' . $friend->last_name }}
+                                    </span>
+                                    <span class="text-muted">
+                                         {{ ' (' . $friend->username . ')' }}
+>>>>>>> origin/movies
                                     </span>
                                 </div>
                             </div>
                         </li>
+<<<<<<< HEAD
                     @endforeach
                     {{ $friends->links() }}
+=======
+                        @endforeach
+                        {{ $friends->links() }}
+>>>>>>> origin/movies
                 </ul>
             </div>
             <div class="modal-footer">

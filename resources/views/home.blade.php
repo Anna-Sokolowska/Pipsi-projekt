@@ -21,12 +21,11 @@
              @foreach($popularMovies as $movie)
                      <div class="card border-0 bg-transparent movie-card" style="width: 12rem;">
                          <div class="card-body p-0">
-                             <img  onclick="window.location='{{url('movie', $movie['id'])}}'" src="{{$movie['poster_path']}}" alt="{{$movie['title']}}">
-                             <h6 onclick="window.location='{{url('movie', $movie['id'])}}'" class="card-title text-center mt-1">{{$movie['title']}}</h6>
+                             <img  onclick="window.location='{{url('movie', $movie['movie_id'])}}'" src="{{$movie['poster_path']}}" alt="{{$movie['title']}}">
+                             <h6 onclick="window.location='{{url('movie', $movie['movie_id'])}}'" class="card-title text-center mt-1">{{$movie['title']}}</h6>
                              <form action="/addMovie" method="post">
-                                 {{csrf_field()}}
-                                 <input type="hidden" name="user_id" value="1">
-                                 <input name="movie_api_id" value="{{$movie['id']}}" type="hidden">
+                                 @csrf
+                                 <input name="movie_api_id" value="{{$movie['movie_id']}}" type="hidden">
                                  <button type="submit" name="add" id="add" class="btn btn-primary" >Add</button>
                              </form>
 

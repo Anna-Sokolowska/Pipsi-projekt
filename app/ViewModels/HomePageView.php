@@ -4,7 +4,7 @@ namespace App\ViewModels;
 
 use Spatie\ViewModels\ViewModel;
 
-class MoviesModel extends ViewModel
+class HomePageView extends ViewModel
 {
     public $popular;
     public $watched;
@@ -20,7 +20,8 @@ class MoviesModel extends ViewModel
         return collect($this->popular)->map(function ($popular) {
             return collect($popular)->merge([
                 'poster_path' => 'https://image.tmdb.org/t/p/w185' . $popular['poster_path'],
-            ])->only('poster_path','title','id');
+                'movie_id' => $popular['id'],
+            ])->only('poster_path','title','movie_id');
         })->take(10);
     }
     public function watchedMovies()

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\WatchedMovies;
 use App\ViewModels\MoviesModel;
+use App\ViewModels\HomePageView;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
@@ -44,10 +45,11 @@ class HomeController extends Controller
             $movie = array_merge($movie, $details);
             $movie['id'] = $id;
         }
-        $viewModel = new MoviesModel(
+        $viewModel = new HomePageView(
             $popularMovies,
             $watchedMovies,
         );
+
         return view('home', $viewModel);
     }
 }

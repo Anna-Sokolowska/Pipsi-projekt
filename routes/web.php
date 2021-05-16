@@ -35,6 +35,7 @@ Route::get('/movie/{movie}', [MoviesController::class, 'show']) ->name('movies.s
 Route::get('/explore',[MoviesController::class, 'explore']) ->name('movies.explore');
 Route::get('/watchedMovies',[WatchedMoviesController::class, 'index']) ->name('watchedmovies.index');
 Route::post('/addMovie', [WatchedMoviesController::class, 'addMovie']) ->name('watchedmovies.addMovie');
+Route::get('/removeMovie/{id}', [WatchedMoviesController::class, 'removeMovie']) ->name('watchedmovies.removeMovie');
 
 Auth::routes();
 

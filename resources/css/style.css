@@ -24,7 +24,7 @@ html,body {
 .card-body img:hover {
     cursor: pointer;
 }
-.card-body a:hover {
+.card-body h6:hover {
     cursor: pointer;
 }
 
