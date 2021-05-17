@@ -9,30 +9,30 @@
         </div>
         <div class="col-lg-8">
             <div class="d-flex pb-2">
-                <button type="button" class="btn btn-primary mt-3 wid" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Share
-                </button>
+                {{-- <button type="button" class="btn btn-primary mt-3 wid" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    {{ __('Share') }}
+                </button> --}}
                 <form style="text-align: right; width:100%" action="../addMovie" method="post">
                     {{csrf_field()}}
                     <input name="movie_api_id" value="{{$movie['id']}}" type="hidden">
-                    <button type="submit" name="add" id="add" class="btn btn-primary mt-3" >Add</button>
+                    <button type="submit" name="add" id="add" class="btn btn-primary mt-3" >{{ __('Add') }}</button>
                 </form>
             </div>
 
             <h2>{{$movie['title']}}</h2>
             <ul class="list-group">
-                <li class="list-group-item"><strong>Genre:</strong> {{$movie['genres']}}</li>
-                <li class="list-group-item"><strong>Released:</strong> {{$movie['release_date']}}</li>
-                <li class="list-group-item"><strong>Rated:</strong> {{$movie['vote_average']}}</li>
-                <li class="list-group-item"><strong>Director:</strong> {{$movie['director']}}</li>
-                <li class="list-group-item"><strong>Writer:</strong> {{$movie['writer']}}</li>
-                <li class="list-group-item"><strong>Actors:</strong> {{$movie['cast']}}</li>
+                <li class="list-group-item"><strong>{{ __('Genre:') }}</strong> {{$movie['genres']}}</li>
+                <li class="list-group-item"><strong>{{ __('Released:') }}</strong> {{$movie['release_date']}}</li>
+                <li class="list-group-item"><strong>{{ __('Rated:') }}</strong> {{$movie['vote_average']}}</li>
+                <li class="list-group-item"><strong>{{ __('Director:') }}</strong> {{$movie['director']}}</li>
+                <li class="list-group-item"><strong>{{ __('Writer:') }}</strong> {{$movie['writer']}}</li>
+                <li class="list-group-item"><strong>{{ __('Actors:') }}</strong> {{$movie['cast']}}</li>
             </ul>
         </div>
     </div>
     <div class="row mt-3">
         <div class="card p-3">
-            <h3>Plot</h3>
+            <h3>{{ __('Plot') }}</h3>
             {{$movie['overview']}}
             <hr>
 
@@ -40,58 +40,40 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Choose friends</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{ __('Choose friends') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-<<<<<<< HEAD
-                <ul class="list-group list-unstyled px-">
-                    @foreach ($friends as $friend)
-                        <li class="friend list-group-item mb-2">
-=======
                 <ul class="list-group list-unstyled px-2">
                         @foreach ($friends as $friend)
                         <li class="friend list-group-item mb-2 mt-1">
->>>>>>> origin/movies
                             <div class="d-flex align-items-center flex-wrap">
                                 <div>
                                     <img class="rounded-circle" src='{{ asset('images/male_user.png') }}' width="50" />
                                     <span class="ms-3">
-<<<<<<< HEAD
-                                        {{ $friend->name . ' ' . $friend->last_name }}
-                                    </span>
-                                    <span class="text-muted">
-                                        {{ ' (' . $friend->username . ')' }}
-=======
                                          {{ $friend->name . ' ' . $friend->last_name }}
                                     </span>
                                     <span class="text-muted">
                                          {{ ' (' . $friend->username . ')' }}
->>>>>>> origin/movies
                                     </span>
                                 </div>
                             </div>
                         </li>
-<<<<<<< HEAD
-                    @endforeach
-                    {{ $friends->links() }}
-=======
                         @endforeach
                         {{ $friends->links() }}
->>>>>>> origin/movies
                 </ul>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary disabled">Share</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Close') }}</button>
+                <button type="button" class="btn btn-primary disabled">{{ __('Share') }}</button>
             </div>
             </div>
         </div>
-    </div>
+    </div> --}}
   </div>
 @endsection
 @section('scripts')

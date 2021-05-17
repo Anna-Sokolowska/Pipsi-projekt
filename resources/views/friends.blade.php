@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-9 col-sm-12">
             <div class="input-group mb-3 ">
-                <button class="input-group-text text-light bg-primary" onclick=searchfriend() data-bs-toggle="modal" data-bs-target="#exampleModal">Search</button>
+                <button class="input-group-text text-light bg-primary" onclick=searchfriend() data-bs-toggle="modal" data-bs-target="#exampleModal">{{ __('Search') }}</button>
                 <input id="friends-search" type="text" class="form-control" placeholder="Search for user..." aria-label="Username" aria-describedby="basic-addon1" name="key">
             </div>
             <!-- Modal -->
@@ -27,7 +27,7 @@
                                                         <span class="ms-3">{{ $user->username }}</span>
                                             </div>
                                             <div>
-                                                <a class="btn btn-primary">Add</a>
+                                                <a class="btn btn-primary">{{ __('Add') }}</a>
                                             </div>
                                         </div>
                                     </li>
@@ -36,7 +36,7 @@
                             </ul>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Close') }}</button>
                         </div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
             </form>
         </div>
     </div>
-    <h3 class="mt-5">Friends:</h3>
+    <h3 class="mt-5">{{ __('Friends:') }}</h3>
     <ul class="list-group list-unstyled px-5">
         @foreach ($friends as $friend)
             <li class="friend list-group-item mb-2">
@@ -55,15 +55,15 @@
                     </div>
 
                     <div>
-                        <a href="{{ url('/user/'. $friend->username) }}" class="btn btn-primary">View profile</a>
-                        <a onclick = "removeFriend({{ $friend->id }})" class="btn btn-danger">Remove</a>
+                        <a href="{{ route('user.show', $friend->username) }}" class="btn btn-primary">{{ __('View profile') }}</a>
+                        <a onclick = "removeFriend({{ $friend->id }})" class="btn btn-danger">{{ __('Remove') }}</a>
                     </div>
                 </div>
             </li>
         @endforeach
         {{-- {{ $friends->links() }} --}}
     </ul>
-    <h3 class="mt-5">Friend request:</h3>
+    <h3 class="mt-5">{{ __('Friend request:') }}</h3>
     <ul class="list-group list-unstyled px-5">
         @foreach ($request as $user)
             <li class="friend list-group-item mb-2">
@@ -74,8 +74,8 @@
                     </div>
 
                     <div>
-                        <a onclick="acceptFriendRequest({{ $user->id }})" class="btn btn-primary">Accept</a>
-                        <a onclick="declineFriendRequest({{ $user->id }})" class="btn btn-danger">Decline</a>
+                        <a onclick="acceptFriendRequest({{ $user->id }})" class="btn btn-primary">{{ __('Accept') }}</a>
+                        <a onclick="declineFriendRequest({{ $user->id }})" class="btn btn-danger">{{ __('Decline') }}</a>
                     </div>
                 </div>
             </li>
@@ -101,7 +101,7 @@ function searchfriend(){
                 key:key,
                 _token:'{{ csrf_token() }}'
             },
-            cache: false,
+            cache: true,
             success:function(response) {
                 $("#Friend-Result").html(response);
         }    
@@ -117,7 +117,7 @@ function sendFriendRequest(recipientID){
             recipientID:recipientID,
             _token:'{{ csrf_token() }}'
         },
-        cache: false,
+        cache: true,
         success:function(response) {
             $("#btn_add_friend_"+recipientID).css("background-color", "gray");  
         }     

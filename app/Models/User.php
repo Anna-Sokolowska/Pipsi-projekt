@@ -27,7 +27,10 @@ class User extends Authenticatable
         'gender',
         'date_of_birth',
         'photo_path',
-        'terms'
+        'terms',
+        'country',
+        'city',
+        'phone'
     ];
 
     /**

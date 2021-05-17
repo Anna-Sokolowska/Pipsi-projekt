@@ -15,45 +15,35 @@
         <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header mt-3">
-                    <h3 class="text-center">Sign In</h3>
+                    <h3 class="text-center">Reset password</h3>
                 </div>
                 <div class="card-body position-relative">
 
-                    <div id="alert-message" class="position-absolute d-none mt-4">
-                        Incorrect email or password!
-                    </div>
-
-                    <form id="login-form" action="index.html">
-                        <div class="input-group form-group mb-3">
-                            <span class="input-group-text"><i class="fas fa-user"></i></span>
-                     
-                            <input id="username" type="text" class="form-control" placeholder="Username or e-mail"> 
-                        </div>
+                    <form action="login.html">
                         <div class="input-group form-group mb-4">
-                            <span class="input-group-text"><i class="fas fa-key"></i></span>
-                            <input id="password" type="password" class="form-control" placeholder="Password">
-                        </div>
-                        <div class="row align-items-center remember mb-2">
-                            <input type="checkbox">Remember Me
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            
+                            <input id="reset-email" type="text" class="form-control" placeholder="Email Address">
+
+                            <div class="alert-message d-none">
+                                This field cannot be blank!
+                            </div>
                         </div>
                         <div class="form-group mb-2">
-                            <input type="submit" value="Login" class="btn float-right login_btn">
+                            <input type="submit" value="Send password/Reset Link" class="btn float-right login_btn w-75 mx-auto">
                         </div>
                     </form>
                 </div>
                 <div class="card-footer pb-5">
                     <div class="d-flex justify-content-center links">
-                        Don't have an account?<a href="register.html">Sign Up</a>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <a href="reset.html">Forgot your password?</a>
+                        Remember your password?<a href="login.html">Sign In</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="scripts/login_auth.js"></script>
+    <script src="scripts/reset_auth.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -31,12 +31,11 @@ Route::post('/friends/declineFriendRequest', [FriendshipController::class, 'decl
 Route::post('/friends/removeFriend', [FriendshipController::class, 'removeFriend']);
 Route::post('/friends/search', [FriendshipController::class, 'search']);
 
-Route::get('/movie/{movie}', [MoviesController::class, 'show']) ->name('movies.show');
-Route::get('/explore',[MoviesController::class, 'explore']) ->name('movies.explore');
+Route::get('/movie/{movie}', [MoviesController::class, 'show'])->middleware(['auth']) ->name('movies.show');
+Route::get('/explore',[MoviesController::class, 'explore'])->middleware(['auth']) ->name('movies.explore');
 Route::get('/watchedMovies',[WatchedMoviesController::class, 'index']) ->name('watchedmovies.index');
 Route::post('/addMovie', [WatchedMoviesController::class, 'addMovie']) ->name('watchedmovies.addMovie');
 Route::get('/removeMovie/{id}', [WatchedMoviesController::class, 'removeMovie']) ->name('watchedmovies.removeMovie');
-
 Auth::routes();
 
 

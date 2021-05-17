@@ -112,6 +112,11 @@ main .container{
     z-index: 1000;
 }
 
+.clear_link{
+    color: unset!important;
+    text-decoration: none!important;
+}
+
 @media (max-width: 975px) {
     .not-icon {
         position: absolute;

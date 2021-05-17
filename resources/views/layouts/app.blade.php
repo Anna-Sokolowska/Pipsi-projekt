@@ -15,6 +15,11 @@
     {{ session('success') }}
 </div>
 @endif
+@if( session('failed') )
+<div class="alert alert-danger position-absolute text-center main_alert" role="alert">
+    {{ session('failed') }}
+</div>
+@endif
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light border-3 border-bottom border-primary">
     <div class="container">
@@ -27,10 +32,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}">Main Page</a>
+            <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}">{{ __('Home') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ Request::is('watchedMovies*') ? 'active' : '' }}" aria-current="page" href="/watchedMovies">{{ __('WatchedMovies')}}</a>
+            <a class="nav-link {{ Request::is('watchedMovies*') ? 'active' : '' }}" aria-current="page" href="/watchedMovies">{{ __('Watched Movies')}}</a>
           </li>
           <li class="nav-item">
             <a class="nav-link {{ Request::is('friends*') ? 'active' : '' }}" aria-current="page" href="{{ route('friends') }}">{{ __('Friends') }}</a>
@@ -39,91 +44,20 @@
           <li class="nav-item">
             <a class="nav-link {{ Request::is('explore*') ? 'active' : '' }}" aria-current="page" href="/explore">{{ __('Explore') }}</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">{{ __('About') }}</a>
-          </li>
         </ul>
 
-        <div class="not-icon position-relative">
-          <i class="fas fa-bell me-5"></i>
-          <span class="position-absolute badge bg-primary">6</span>
-
-          <div class="not-list d-none shadow-sm position-absolute border bg-white">
-            <h6 class="text-center border-bottom p-1 m-0">Notifications</h6>
-            <ul class="list-unstyled">
-              <li class="border-bottom">
-                <div class="d-flex align-items-start p-2">
-                  <a href="viewProfile.html"><img class="rounded-circle" src="images/male_user.png" width="40" alt="user"></a>
-                  <div class="ms-2">
-                    <h6 class="not-message fw-bold"><a href="movie.html" class="text-dark text-decoration-none">Patryk Biernacki recommends star wars: empire strikes back</a></h6>
-                    <span class="not-time text-secondary"><i class="far fa-clock"></i> 14 min ago</span>
-                  </div>
-                </div>
-              </li>
-              <li class="border-bottom">
-                <div class="d-flex align-items-start p-2">
-                  <a href="viewProfile.html"><img class="rounded-circle" src="images/male_user.png" width="40" alt="user"></a>
-                  <div class="ms-2">
-                    <h6 class="not-message fw-bold"><a href="movie.html" class="text-dark text-decoration-none">Patryk Biernacki recommends star wars: empire strikes back</a></h6>
-                    <span class="not-time text-secondary"><i class="far fa-clock"></i> 14 min ago</span>
-                  </div>
-                </div>
-              </li><li class="border-bottom">
-                <div class="d-flex align-items-start p-2">
-                  <a href="viewProfile.html"><img class="rounded-circle" src="images/male_user.png" width="40" alt="user"></a>
-                  <div class="ms-2">
-                    <h6 class="not-message"><a href="movie.html" class="text-dark text-decoration-none">Patryk Biernacki recommends star wars: empire strikes back</a></h6>
-                    <span class="not-time text-secondary"><i class="far fa-clock"></i> 14 min ago</span>
-                  </div>
-                </div>
-              </li>
-              <li class="border-bottom">
-                <div class="d-flex align-items-start p-2">
-                  <a href="viewProfile.html"><img class="rounded-circle" src="images/male_user.png" width="40" alt="user"></a>
-                  <div class="ms-2">
-                    <h6 class="not-message fw-bold"><a href="viewProfile.html" class="text-dark text-decoration-none">Patryk Biernacki sent you a friend request</a></h6>
-                    <div class="d-flex gap-1 mt-1">
-                      <button class="btn btn-success">Accept</button>
-                      <button class="btn btn-danger">Decline</button>
-                    </div>
-                    <span class="not-time text-secondary"><i class="far fa-clock"></i> 14 min ago</span>
-                  </div>
-                </div>
-              </li>
-              <li class="border-bottom">
-                <div class="d-flex align-items-start p-2">
-                  <a href="viewProfile.html"><img class="rounded-circle" src="images/male_user.png" width="40" alt="user"></a>
-                  <div class="ms-2">
-                    <h6 class="not-message"><a href="viewProfile.html" class="text-dark text-decoration-none">Patryk Biernacki sent you a friend request</a></h6>
-                    <div class="d-flex gap-1 mt-1">
-                      <button class="btn btn-success">Accept</button>
-                      <button class="btn btn-danger">Decline</button>
-                    </div>
-                    <span class="not-time text-secondary"><i class="far fa-clock"></i> 14 min ago</span>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
 
         <div class="d-flex align-items-center">
-{{--         @if (!is_null(Auth::user()->photo_path))--}}
-{{--           <img class="rounded-circle" src="{{ asset('storage/' . Auth::user()->photo_path) }}" alt="male_user" width="50">--}}
-{{--          @elseif (Auth::user()->gender == 'female')--}}
-            <img class="rounded-circle" src="{{ asset('images/female_user.jpg') }}" alt="male_user" width="50">
-{{--         @else--}}
-{{--           <img class="rounded-circle" src="{{ asset('images/male_user.png') }}" alt="male_user" width="50">--}}
-{{--         @endif--}}
+            <img class="rounded-circle" src="{{ asset('images/male_user.png') }}" alt="male_user" width="50">
 
          <div class="dropdown">
            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-{{--             {{ Auth::user()->name }}--}}
+            {{ Auth::user()->name }}
            </button>
            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 
-{{--             <li><a class="dropdown-item" href="{{ route('user.show', Auth::user()->username) }}">My Profile</a></li>--}}
-             <li><a class="dropdown-item" href="notification.html">Notifications <span class="badge rounded-pill bg-primary">3</span></a></li>
+            <li><a class="dropdown-item" href="{{ route('user.show', Auth::user()->username) }}">{{ __('My Profile') }}</a></li>
+            
              <li><a class="dropdown-item" href="{{ route('logout') }}"
                onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
@@ -142,9 +76,6 @@
 <main>
     @yield('content')
 </main>
-  {{-- <script src="{{ asset('js/script.js') }}"></script> --}}
-  {{-- <script src="{{ asset('js/explore.js') }}"></script>
-  <script src="{{ asset('js/profile.js') }}"></script> --}}
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
   @yield('scripts')
 </body>

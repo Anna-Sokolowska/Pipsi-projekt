@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\ViewModels\WatchedMoviesView;
+use App\Models\Share;
 use Illuminate\Http\Request;
 use App\Models\WatchedMovies;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use App\ViewModels\WatchedMoviesView;
 
 class WatchedMoviesController extends Controller
 {

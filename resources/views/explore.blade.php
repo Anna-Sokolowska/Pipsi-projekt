@@ -10,12 +10,12 @@
              </div>
          </div>
      </div>
-     <h3 class="mt-5">Results:</h3>
+     <h3 class="mt-5">{{ __('Results:') }}</h3>
      <div id="movies-results" class="d-flex flex-wrap gap-5 p-4">
         <form >
 
         </form>
-         <h2 class="mx-auto">Type something to search for movies :)</h2>
+         <h2 class="mx-auto">{{ __('Type something to search for movies :)') }}</h2>
      </div>
  </div>
 @endsection

@@ -1,7 +1,8 @@
 @if($users->isEmpty())
-Users not found
+{{ __('Users not found') }}
 @else
 @foreach ( $users as $user )
+<a href="{{ route('user.show', $user->username) }}" class="clear_link">
 <li class="friend list-group-item mb-2">
     <div class="d-flex justify-content-between align-items-center flex-wrap">
         <div>
@@ -14,9 +15,9 @@ Users not found
             </span>
         </div>
         <div>
-            <a id="btn_add_friend_{{ $user->id }}" class="btn btn-primary" onclick="sendFriendRequest({{ $user->id }})">Add</a>
+            <a id="btn_add_friend_{{ $user->id }}" class="btn btn-primary" onclick="sendFriendRequest({{ $user->id }})">{{ __('Add') }}</a>
         </div>
     </div>
-</li>
+</li></a>
 @endforeach
 @endif

@@ -6,16 +6,8 @@
                 <div class="card-body">
                     <div class="row justify-content-center">
                         <div class="col-xxl-3 col-lg-4 col-sm-5 col-8">
-                          @if (!is_null(Auth::user()->photo_path))
-                            <img class="rounded-circle mx-auto" width="200" height="200" 
-                              src="{{ asset('storage/' . Auth::user()->photo_path) }}" alt="user">
-                          @elseif (Auth::user()->gender == 'female')
-                            <img class="rounded-circle mx-auto" width="200" height="200" 
-                              src="{{ asset('images/female_user.jpg') }}" alt="user">
-                          @else
                             <img class="rounded-circle mx-auto" width="200" height="200" 
                             src="{{ asset('images/male_user.png') }}" alt="user">
-                          @endif
                             <h5 class="ms-5 mt-2 pb-2">{{ $user->name }}</h5>
                         </div>
                         <div class="col-xxl-8 col-lg-6 col-md-6 mt-3">
@@ -30,10 +22,10 @@
                     </div>
                 </div>
             </div>
-
-            <a href="#" class="btn btn-danger mt-3">Remove</a>
-            
-            <h3 class="mt-4">Recommended Movies</h3>
+            @if($isFriend)
+              <a href="#" class="btn btn-danger mt-3">{{ __('Remove') }}</a>
+            @endif
+            <h3 class="mt-4">{{ __('Recommended Movies') }}</h3>
             <div id="movies-results" class="d-flex flex-wrap gap-5 p-4 bg-white border">
               @if(Empty($watchedMovies))
                 This user haven't watched any movies yet

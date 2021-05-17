@@ -27,10 +27,9 @@ class StoreUserRequest extends FormRequest
             'name' => 'string', 'max:255',
             'last_name' => 'string', 'max:255',
             'gender' => 'in:male,female',
-            'date_of_birth' => 'date', 'before:today',
-            // 'city' => 'string',
-            // 'country' => 'string',
-            // 'phone' => 'string',
+            'country' => 'string', 'max:255',
+            'city' => 'string', 'max:255',
+            'phone' => 'string', 'max:255',
         ];
     }
 }
